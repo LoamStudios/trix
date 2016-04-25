@@ -5,6 +5,15 @@ Trix.config.toolbar =
   content: makeFragment """
     <div class="button_groups">
       <span class="button_group text_tools">
+        <button type="button" class="h1" data-trix-attribute="h1" title="#{lang.h1}">#{lang.h1}</button>
+        <button type="button" class="h2" data-trix-attribute="h2" title="#{lang.h2}">#{lang.h2}</button>
+        <button type="button" class="h3" data-trix-attribute="h3" title="#{lang.h3}">#{lang.h3}</button>
+        <button type="button" class="h4" data-trix-attribute="h4" title="#{lang.h4}">#{lang.h4}</button>
+        <button type="button" class="h5" data-trix-attribute="h5" title="#{lang.h5}">#{lang.h5}</button>
+        <button type="button" class="h6" data-trix-attribute="h6" title="#{lang.h6}">#{lang.h6}</button>
+      </span>
+
+      <span class="button_group text_tools">
         <button type="button" class="bold" data-trix-attribute="bold" data-trix-key="b" title="#{lang.bold}">#{lang.bold}</button>
         <button type="button" class="italic" data-trix-attribute="italic" data-trix-key="i" title="#{lang.italic}">#{lang.italic}</button>
         <button type="button" class="strike" data-trix-attribute="strike" title="#{lang.strike}">#{lang.strike}</button>
