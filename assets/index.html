@@ -17,6 +17,17 @@
       document.addEventListener("trix-initialize", function(event) {
         Trix.Inspector.install(event.target);
       });
+      document.addEventListener("trix-change", function(event) {
+        // console.log(event);
+      });
+      var prevDoc;
+      document.addEventListener("trix-document-change", function(event) {
+        console.log("--- document changed----")
+        var doc = event.target.editor.getDocument();
+        var changes = Trix.Document.diff(doc, prevDoc)
+        console.log(changes);
+        prevDoc = doc;
+      });
     </script>
   </head>
   <body>

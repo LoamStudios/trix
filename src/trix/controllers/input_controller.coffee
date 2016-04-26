@@ -118,6 +118,8 @@ class Trix.InputController extends Trix.BasicObject
             event.preventDefault()
 
     keypress: (event) ->
+      console.log "----- KEY PRESS --------"
+
       return if @inputSummary.eventName?
       return if (event.metaKey or event.ctrlKey) and not event.altKey
       return if keyEventIsWebInspectorShortcut(event)
