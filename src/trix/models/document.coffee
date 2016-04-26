@@ -17,6 +17,34 @@ class Trix.Document extends Trix.Object
     text = Trix.Text.textForStringWithAttributes(string, textAttributes)
     new this [new Trix.Block text]
 
+  @diff: (currentDoc, previousDoc) ->
+    changeSet = []
+
+    if previousDoc?
+      # determine which doc is longer
+      currentLength = currentDoc.getBlockCount()
+      prevLength = previousDoc.getBlockCount()
+
+      if currentLength >= prevLength
+        leftDoc = currentDoc
+        rightDoc = prevDoc
+      else if prevLength > currentLength
+        leftDoc = prevDoc
+        rightDoc = currentDoc
+
+      blocks = leftDoc.getBlocks()
+      prevBlocks = rightDoc.getBlocks()
+
+      for currBlock, i in blocks
+        prevBlock = prevBlocks[i]
+        didChange = not currBlock.isEqualTo(prevBlock)
+        changeSet.push({current: currBlock, updated: didChange})
+
+      changeSet
+    else
+      for block in currentDoc.getBlocks()
+        changeSet.push({current: block, updated: true})
+      changeSet
 
   constructor: (blocks = []) ->
     super

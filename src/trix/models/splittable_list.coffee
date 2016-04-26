@@ -1,4 +1,7 @@
+# Immutable list with helpers to make splits and inserts easy
 class Trix.SplittableList extends Trix.Object
+  # Box the passed objects in a SplittableList
+  # @param {objects} to box
   @box: (objects) ->
     if objects instanceof this
       objects
@@ -10,19 +13,29 @@ class Trix.SplittableList extends Trix.Object
     @objects = objects.slice(0)
     @length = @objects.length
 
+  # Invoke a callback for each object in the  list
+  # @param {callback} to be invoked
   eachObject: (callback) ->
     callback(object, index) for object, index in @objects
 
+  # Insert an object into the list as a position
+  # @param {object} to be insert
+  # @param {index} of where to insert the object
+  # @return new instance with the object inserted at index
   insertObjectAtIndex: (object, index) ->
     objects = @objects.slice(0)
     objects.splice(index, 0, object)
     new @constructor objects
 
+  # Insert a list at the index
+  # @param [splittableList] list to insert
+  # @param [index] where to insert list
   insertSplittableListAtIndex: (splittableList, index) ->
     objects = @objects.slice(0)
     objects.splice(index, 0, splittableList.objects...)
     new @constructor objects
 
+  # Insert a list at the posiion
   insertSplittableListAtPosition: (splittableList, position) ->
     [objects, index] = @splitObjectAtPosition(position)
     new @constructor(objects).insertSplittableListAtIndex(splittableList, index)
@@ -40,6 +53,8 @@ class Trix.SplittableList extends Trix.Object
     objects.splice(index, 1)
     new @constructor objects
 
+  # Get object at index
+  # @param [index] of object to retrieve
   getObjectAtIndex: (index) ->
     @objects[index]
 
