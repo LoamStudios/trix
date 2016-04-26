@@ -13,6 +13,13 @@ end
 %>
 
 trix-toolbar .button_group button {
+  &.h1::before { background-image: url(<%= svgo_data_uri('trix/images/h1.svg', precision: 1) %>); }
+  &.h2::before { background-image: url(<%= svgo_data_uri('trix/images/h2.svg', precision: 1) %>); }
+  &.h3::before { background-image: url(<%= svgo_data_uri('trix/images/h3.svg', precision: 1) %>); }
+  &.h4::before { background-image: url(<%= svgo_data_uri('trix/images/h4.svg', precision: 1) %>); }
+  &.h5::before { background-image: url(<%= svgo_data_uri('trix/images/h5.svg', precision: 1) %>); }
+  &.h6::before { background-image: url(<%= svgo_data_uri('trix/images/h6.svg', precision: 1) %>); }
+
   &.bold::before { background-image: url(<%= svgo_data_uri('trix/images/bold.svg', precision: 1) %>); }
   &.italic::before { background-image: url(<%= svgo_data_uri('trix/images/italic.svg', precision: 1) %>); }
   &.link::before { background-image: url(<%= svgo_data_uri('trix/images/link.svg', precision: 2) %>); }

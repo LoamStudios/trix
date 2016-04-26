@@ -195,7 +195,7 @@ class Trix.Composition extends Trix.BasicObject
   removeLastBlockAttribute: ->
     [startPosition, endPosition] = @getSelectedRange()
     block = @document.getBlockAtPosition(endPosition)
-    @removeCurrentAttribute(block.getLastAttribute())
+    block.removeLastAttribute()
     @setSelection(startPosition)
 
   placeholder = " "
@@ -250,11 +250,14 @@ class Trix.Composition extends Trix.BasicObject
 
   setBlockAttribute: (attributeName, value) ->
     return unless selectedRange = @getSelectedRange()
+    if @getBlock()?.isSingleLine()
+      @removeBlockAttribute(@getBlock().getLastAttribute())
+
     @setDocument(@document.applyBlockAttributeAtRange(attributeName, value, selectedRange))
     @setSelection(selectedRange)
 
   removeCurrentAttribute: (attributeName) ->
-    @removeLastBlockAttribute() if @getBlock()?.getConfig("leaf")
+    @removeLastBlockAttribute() if @getBlock()?.isSingleLine()
     if Trix.config.blockAttributes[attributeName]
       @removeBlockAttribute(attributeName)
       @updateCurrentAttributes()
