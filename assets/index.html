@@ -25,7 +25,35 @@
         console.log("--- document changed----")
         var doc = event.target.editor.getDocument();
         var changes = Trix.Document.diff(doc, prevDoc)
-        console.log(changes);
+
+        console.log("render change set")
+        changes.forEach(function (change) {
+          if (change.updated) {
+            console.log
+            var block = change.current
+            var blockview = new Trix.BlockView(block)
+            var nodes = blockview.createNodes()
+
+            // convert the block into a form we can send to the server
+            // We need:
+            // endpoint to POST
+            // position in list
+            // value
+
+            // How do we handle:
+            // lists
+            // image attachments
+            // attachments of arbitrary HTML
+            console.log(block.getAttributes())
+
+
+            nodes.forEach(function(node){
+              var tmp = document.createElement("div");
+              tmp.appendChild(node);
+              console.log(tmp.innerHTML);
+            })
+          }
+        });
         prevDoc = doc;
       });
     </script>

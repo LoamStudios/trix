@@ -35,6 +35,8 @@ class Trix.Document extends Trix.Object
       blocks = leftDoc.getBlocks()
       prevBlocks = rightDoc.getBlocks()
 
+      # TODO mark deleted blocks
+
       for currBlock, i in blocks
         prevBlock = prevBlocks[i]
         didChange = not currBlock.isEqualTo(prevBlock)
