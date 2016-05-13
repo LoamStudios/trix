@@ -24,6 +24,7 @@ Trix.Inspector.registerView class extends Trix.Inspector.View
     while position < utf16string.length
       string = utf16string.charAt(position).toString()
       string = "⏎" if string is "\n"
+      string = "↡" if string is "\f"
       selected = rangeIsExpanded and (position >= @range[0] and position < @range[1])
       chars.push({string, selected})
       position++

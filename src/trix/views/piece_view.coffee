@@ -1,4 +1,5 @@
 #= require trix/views/attachment_view
+#= require trix/views/page_break_view
 #= require trix/views/previewable_attachment_view
 
 {makeElement, findInnerElement} = Trix
@@ -12,12 +13,16 @@ class Trix.PieceView extends Trix.ObjectView
 
     if @piece.attachment
       @attachment = @piece.attachment
+    else if @piece.pagebreak
+      @isPageBreak = true
     else
       @string = @piece.toString()
 
   createNodes: ->
     nodes = if @attachment
       @createAttachmentNodes()
+    else if @isPageBreak
+      @createPageBreakNodes()
     else
       @createStringNodes()
 
@@ -26,6 +31,10 @@ class Trix.PieceView extends Trix.ObjectView
       innerElement.appendChild(node) for node in nodes
       nodes = [element]
     nodes
+
+  createPageBreakNodes: ->
+    view = @createChildView(Trix.PageBreakView, @piece.pagebreak, {@piece})
+    view.getNodes()
 
   createAttachmentNodes: ->
     constructor = if @attachment.isPreviewable()

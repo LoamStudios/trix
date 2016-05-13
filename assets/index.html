@@ -22,14 +22,14 @@
       });
       var prevDoc;
       document.addEventListener("trix-document-change", function(event) {
-        console.log("--- document changed----")
+        // console.log("--- document changed----")
         var doc = event.target.editor.getDocument();
         var changes = Trix.Document.diff(doc, prevDoc)
 
-        console.log("render change set")
+        // console.log("render change set")
         changes.forEach(function (change) {
           if (change.updated) {
-            console.log
+            // console.log
             var block = change.current
             var blockview = new Trix.BlockView(block)
             var nodes = blockview.createNodes()
@@ -44,13 +44,13 @@
             // lists
             // image attachments
             // attachments of arbitrary HTML
-            console.log(block.getAttributes())
+            // console.log(block.getAttributes())
 
 
             nodes.forEach(function(node){
               var tmp = document.createElement("div");
               tmp.appendChild(node);
-              console.log(tmp.innerHTML);
+              // console.log(tmp.innerHTML);
             })
           }
         });

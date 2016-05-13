@@ -96,6 +96,7 @@ class Trix.Composition extends Trix.BasicObject
     [startPosition, endPosition] = @getSelectedRange()
     startLocation = @document.locationFromPosition(startPosition)
     endLocation = @document.locationFromPosition(endPosition)
+    console.log endLocation
     block = @document.getBlockAtIndex(endLocation.index)
 
     if block.hasAttributes()
@@ -122,6 +123,16 @@ class Trix.Composition extends Trix.BasicObject
           @insertString("\n")
     else
       @insertBlockBreak()
+
+  insertPageBreak: ->
+    console.log "Insert page break"
+    text = Trix.Text.textForPageBreakWithAttributes({pageBreak: true})
+    @insertText(text)
+    selectedRange = @getSelectedRange()
+    console.log selectedRange
+    selectedRange[1] +=1
+    @setDocument(@document.applyBlockAttributeAtRange("yyyy", true, [0, 2]))
+    @setSelection(selectedRange)
 
   insertHTML: (html) ->
     startPosition = @getPosition()

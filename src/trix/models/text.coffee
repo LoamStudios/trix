@@ -1,4 +1,5 @@
 #= require trix/models/attachment_piece
+#= require trix/models/page_break_piece
 #= require trix/models/string_piece
 #= require trix/models/splittable_list
 
@@ -9,6 +10,12 @@ class Trix.Text extends Trix.Object
 
   @textForStringWithAttributes: (string, attributes) ->
     piece = new Trix.StringPiece string, attributes
+    new this [piece]
+
+  @textForPageBreakWithAttributes: (attributes) ->
+    pageBreak =
+      getCacheKey: -> "pagebreak"
+    piece = new Trix.PageBreakPiece pageBreak, attributes
     new this [piece]
 
   @fromJSON: (textJSON) ->

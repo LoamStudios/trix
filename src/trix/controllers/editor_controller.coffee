@@ -284,6 +284,9 @@ class Trix.EditorController extends Trix.Controller
     decreaseBlockLevel:
       test: -> @editor.canDecreaseIndentationLevel()
       perform: -> @editor.decreaseIndentationLevel() and @render()
+    pagebreak:
+      test: -> true
+      perform: -> @editor.insertPageBreak()
 
   canInvokeAction: (actionName) ->
     if @actionIsExternal(actionName)

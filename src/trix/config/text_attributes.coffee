@@ -21,5 +21,12 @@ Trix.config.textAttributes =
   strike:
     tagName: "del"
     inheritable: true
+  mark:
+    tagName: "mark"
+    inheritable: true
+  subscript:
+    tagName: "sub"
+  superscript:
+    tagName: "sup"
   frozen:
     style: { "backgroundColor": "highlight" }

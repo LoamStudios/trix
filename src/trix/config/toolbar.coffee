@@ -17,7 +17,10 @@ Trix.config.toolbar =
         <button type="button" class="bold" data-trix-attribute="bold" data-trix-key="b" title="#{lang.bold}">#{lang.bold}</button>
         <button type="button" class="italic" data-trix-attribute="italic" data-trix-key="i" title="#{lang.italic}">#{lang.italic}</button>
         <button type="button" class="strike" data-trix-attribute="strike" title="#{lang.strike}">#{lang.strike}</button>
+        <button type="button" class="subscript" data-trix-attribute="subscript" title="#{lang.subscript}">#{lang.subscript}</button>
+        <button type="button" class="superscript" data-trix-attribute="superscript" title="#{lang.superscript}">#{lang.superscript}</button>
         <button type="button" class="link" data-trix-attribute="href" data-trix-action="link" data-trix-key="k" title="#{lang.link}">#{lang.link}</button>
+        <button type="button" class="mark" data-trix-attribute="mark" data-trix-action="mark" title="#{lang.mark}">#{lang.mark}</button>
       </span>
 
       <span class="button_group block_tools">
@@ -27,6 +30,7 @@ Trix.config.toolbar =
         <button type="button" class="list numbers" data-trix-attribute="number" title="#{lang.numbers}">#{lang.numbers}</button>
         <button type="button" class="block-level decrease" data-trix-action="decreaseBlockLevel" title="#{lang.outdent}">#{lang.outdent}</button>
         <button type="button" class="block-level increase" data-trix-action="increaseBlockLevel" title="#{lang.indent}">#{lang.indent}</button>
+        <button type="button" class="mark" data-trix-action="pagebreak" title="#{lang.pagebreak}">#{lang.pagebreak}</button>
       </span>
 
       <span class="button_group history_tools">
